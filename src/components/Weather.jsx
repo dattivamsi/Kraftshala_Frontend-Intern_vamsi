@@ -42,8 +42,7 @@ const Weather = () => {
     setInputData(e.target.value);
   };
 
-  function formatDateTime(timestamp,timezoneOffset) {
-    
+  function formatDateTime(timestamp, timezoneOffset) {
     const utcDate = new Date(timestamp * 1000);
 
     const localDate = new Date(utcDate.getTime() + timezoneOffset * 1000);
@@ -81,7 +80,7 @@ const Weather = () => {
         // location: "Details Not Found",
         icon: "Details Not Found",
         datetime: "Details Not Found",
-        inValid: "Enter Correct City"
+        inValid: "Enter Correct City",
       });
       // console.log(error)
     }
@@ -97,12 +96,21 @@ const Weather = () => {
 
   return (
     <>
-      <div className="weather-container darkmode">
-        <div className="dark-button">
-          <div
+      <div className="weather-container">
+        <div className={darkmode ? "weather" : "weather dark"}>
+          <div className="weather-container darkmode">
+            <div className="dark-button">
+              <label className="ui-switch">
+                <input type="checkbox" onClick={() => darkmodeChanges()} />
+                <div className="slider">
+                  <div className="circle"></div>
+                </div>
+              </label>
+
+              {/* <div
             onClick={() => darkmodeChanges()}
             className={
-              darkmode ? "dark-mode-container" : "dark-mode-container dark"
+              darkmode ? "dark-mode-container" : "dark-mode-container dark1"
             }
           >
             <button>
@@ -112,41 +120,54 @@ const Weather = () => {
                 <CiLight style={{ color: "white", fontWeight: "bold" }} />
               )}
             </button>
+          </div> */}
+            </div>
           </div>
-        </div>
-      </div>
-      <div className="weather-container">
-        <div className={darkmode ? "weather" : "weather dark"}>
           <label htmlFor="country">Enter Loacation</label>
           <div className="search-bar">
             <input
               type="text"
               id="country"
-              placeholder="enter city"
-              value={inputData}
+              placeholder="Enter City..."
+              value={inputData?.toLocaleUpperCase()}
               onChange={(e) => handleChange(e)}
             />
             <img src={search_icon} alt="" onClick={() => search(inputData)} />
           </div>
-          {weatherData?.inValid && <p className="date-time red">{weatherData?.inValid}</p>}
+          {weatherData?.inValid && (
+            <p className="date-time red">{weatherData?.inValid}</p>
+          )}
           <p className="date-time">{weatherData?.datetime}</p>
           <img src={weatherData?.icon} alt="" className="weather-icon" />
           <div className="temperature-container">
             <div>
               <p className="min-temp">Min Temp</p>
-          <p className="tempretarure">{weatherData?.min_temperature ? weatherData?.min_temperature : "-"} °C</p>
+              <p className="tempretarure">
+                {weatherData?.min_temperature
+                  ? weatherData?.min_temperature
+                  : "-"}{" "}
+                °C
+              </p>
             </div>
             <div>
-            <p className="min-temp">Avg Temp</p>
-          <p className="tempretarure">{weatherData?.temperature ? weatherData?.temperature : "-"} °C</p>
+              <p className="min-temp">Avg Temp</p>
+              <p className="tempretarure">
+                {weatherData?.temperature ? weatherData?.temperature : "-"} °C
+              </p>
             </div>
             <div>
-            <p className="min-temp">Max Temp</p>
-          <p className="tempretarure">{weatherData?.max_temperature ? weatherData?.max_temperature : "-"} °C</p>
+              <p className="min-temp">Max Temp</p>
+              <p className="tempretarure">
+                {weatherData?.max_temperature
+                  ? weatherData?.max_temperature
+                  : "-"}{" "}
+                °C
+              </p>
             </div>
-
           </div>
-          <p className="weather-location">{weatherData?.location ? weatherData?.location :"-"}</p>
+          <p className="weather-location">
+            {weatherData?.location ? weatherData?.location : "-"}
+          </p>
           <div className="weather-Data">
             <div className="col">
               <img src={humidity_icon} alt="" />
