@@ -97,7 +97,7 @@ const Weather = () => {
       search(inputData);
     }
   };
-  
+
 
   // Effect hook to load weather data on initial component load
   useEffect(() => {
@@ -172,7 +172,7 @@ const Weather = () => {
           </p>
           <div className="weather-Data">
             <div className="col">
-              <img src={humidity_icon} alt="" />
+              <img src={humidity_icon} alt="" className="humidity"/>
               <div>
                 <p>{weatherData?.humidity}</p>
                 <span>Humidity</span>
@@ -180,7 +180,7 @@ const Weather = () => {
             </div>
 
             <div className="col">
-              <img src={wind_icon} alt="" />
+              <img src={wind_icon} alt="" className="humidity"/>
               <div>
                 <p>{weatherData?.windSpeed} Km/h</p>
                 <span>Wind Speed</span>

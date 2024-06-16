@@ -159,7 +159,7 @@ button:focus-visible {
 }
 .weather-Data .col{
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 1rem;
 }
 .dark-mode-container{
@@ -297,4 +297,19 @@ button:focus-visible {
   .weather{
     width: 90%;
   }
+  .temperature-container .tempretarure{
+    font-size: 15px;
+  }
+  .temperature-container .min-temp{
+    font-size: 14px;
+  }
+  .humidity{
+    height: 25px;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1240px) {
+  .weather {
+    width: 40%;
+  }
+  
 }
