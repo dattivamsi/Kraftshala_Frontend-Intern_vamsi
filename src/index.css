@@ -104,6 +104,7 @@ button:focus-visible {
   flex-direction: column;
   width: 25%;
   align-items: center;
+  /* height: 70vh; */
 }
 
 .search-bar{

@@ -35,6 +35,7 @@ const Weather = () => {
     "13d": snow_icon,
     "13n": snow_icon,
     "50d": snow_icon,
+    "50n": snow_icon,
   };
 
   const handleChange = (e) => {
