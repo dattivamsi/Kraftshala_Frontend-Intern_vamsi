@@ -107,20 +107,6 @@ const Weather = () => {
                 </div>
               </label>
 
-              {/* <div
-            onClick={() => darkmodeChanges()}
-            className={
-              darkmode ? "dark-mode-container" : "dark-mode-container dark1"
-            }
-          >
-            <button>
-              {darkmode ? (
-                <MdDarkMode />
-              ) : (
-                <CiLight style={{ color: "white", fontWeight: "bold" }} />
-              )}
-            </button>
-          </div> */}
             </div>
           </div>
           <label htmlFor="country">Enter Loacation</label>
@@ -129,7 +115,7 @@ const Weather = () => {
               type="text"
               id="country"
               placeholder="Enter City..."
-              value={inputData?.toLocaleUpperCase()}
+              value={inputData}
               onChange={(e) => handleChange(e)}
             />
             <img src={search_icon} alt="" onClick={() => search(inputData)} />
