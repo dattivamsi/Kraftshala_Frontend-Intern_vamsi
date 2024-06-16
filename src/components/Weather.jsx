@@ -38,10 +38,13 @@ const Weather = () => {
     "50n": snow_icon,
   };
 
+
+  // Handler for input change
   const handleChange = (e) => {
     setInputData(e.target.value);
   };
 
+  // Function to format date and time
   function formatDateTime(timestamp, timezoneOffset) {
     const utcDate = new Date(timestamp * 1000);
 
@@ -54,6 +57,7 @@ const Weather = () => {
     return formattedDate;
   }
 
+  // Function to fetch weather data from API
   const search = async (city) => {
     try {
       const response = await fetch(
@@ -73,6 +77,7 @@ const Weather = () => {
       });
       setInputData("");
     } catch (error) {
+      // Handle errors and set state accordingly
       setWeatherData({
         humidity: "Details Not Found",
         windSpeed: "Details Not Found",
@@ -86,10 +91,19 @@ const Weather = () => {
     }
   };
 
+  // Handle enter key press in input field to trigger search
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      search(inputData);
+    }
+  };
+
+  // Effect hook to load weather data on initial component load
   useEffect(() => {
     search("hyderabad");
   }, []);
 
+  // Toggle dark mode function
   const darkmodeChanges = () => {
     setDarkMode((prev) => !prev);
   };
@@ -117,6 +131,7 @@ const Weather = () => {
               placeholder="Enter City..."
               value={inputData}
               onChange={(e) => handleChange(e)}
+              onKeyDown={handleKeyDown}
             />
             <img src={search_icon} alt="" onClick={() => search(inputData)} />
           </div>
