@@ -97,6 +97,7 @@ const Weather = () => {
       search(inputData);
     }
   };
+  
 
   // Effect hook to load weather data on initial component load
   useEffect(() => {
